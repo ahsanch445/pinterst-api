@@ -1,0 +1,24 @@
+   try {
+        const exits =  await userModel.findOne({
+            email:email
+        })
+        if(exits){
+            return res.status(409).json({ message: 'User already exists' });
+        }
+        else{
+            const newUser=await new userModel({
+            username:username,
+            name:name,
+            email:email,
+            password:password
+        })
+    await newUser .save()
+    return res.status(201).json({ message: 'User created successfully' });
+    }
+      } catch (error) {
+        console.error('Error creating user:', error);
+        return res.status(500).json({ message: 'Internal Server Error' });
+      }  
+
+
+    }

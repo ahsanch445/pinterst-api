@@ -1,0 +1,10 @@
+{
+   "version": 2,
+   "builds": [
+     { "src": "path/to/source", "use": "@vercel/static-build" }
+   ],
+   "env": {
+     "YOUR_ENV_VARIABLE": "value"
+   }
+ }
+ 
