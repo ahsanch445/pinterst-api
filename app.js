@@ -8,11 +8,12 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 require("./mongodb/db")
 var app = express();
-var cors = require("cors")
 const corsOptions = {
-  origin: 'https://pinterst-kappa.vercel.app/', // Update with your frontend origin
+  origin: 'https://pinterst-kappa.vercel.app', 
   credentials: true,
 };
+
+
 app.use(cors(corsOptions))
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
