@@ -75,6 +75,7 @@ const LoginAuth = async (req, res) => {
         else {
             const token = jwt.sign({ userid: isemail._id }, process.env.JWT_SECRET)
             res.cookie(String(isemail.id), token, { httpOnly: true, secure: true, sameSite: 'strict' });
+            console.log(token)
 
         }
         return res.status(200).json({ massage: "user is login" })
