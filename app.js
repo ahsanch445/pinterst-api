@@ -9,12 +9,13 @@ var usersRouter = require('./routes/users');
 var cors = require("cors")
 require("./mongodb/db")
 var app = express();
-const corsOptions = {
-  origin: 'https://pinterst-kappa.vercel.app',
-  credentials: true,
-  optionsSuccessStatus: 204,
-};
-app.use(cors(corsOptions));
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://pinterst-kappa.vercel.app');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header('Access-Control-Allow-Credentials', true);
+  next();
+});
 // app.use(cors({
 
 //   origin:"http://localhost:5173",
