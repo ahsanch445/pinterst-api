@@ -9,7 +9,7 @@ var usersRouter = require('./routes/users');
 require("./mongodb/db")
 var app = express();
 const corsOptions = {
-  origin: '*', 
+  origin: 'https://pinterst-kappa.vercel.app', 
   credentials: true,
 };
 
