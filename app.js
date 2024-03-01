@@ -10,12 +10,12 @@ var cors = require("cors")
 require("./mongodb/db")
 var app = express();
 const corsOptions = {
-  origin: 'https://pinterst-kappa.vercel.app/login', 
+  origin: 'https://pinterst-kappa.vercel.app',
   credentials: true,
+  optionsSuccessStatus: 204,
 };
+app.use(cors(corsOptions));
 
-
-app.use(cors(corsOptions))
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
