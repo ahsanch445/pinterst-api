@@ -9,11 +9,11 @@ var usersRouter = require('./routes/users');
 require("./mongodb/db")
 var app = express();
 var cors = require("cors")
-const corsOptions = {
-  origin: 'http://localhost:5173', // Update with your frontend origin
-  credentials: true,
-};
-app.use(cors(corsOptions))
+// const corsOptions = {
+//   origin: 'http://localhost:5173', // Update with your frontend origin
+//   credentials: true,
+// };
+app.use(cors())
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
