@@ -6,6 +6,7 @@ var logger = require('morgan');
  require("dotenv").config()
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var cors = require("cors")
 require("./mongodb/db")
 var app = express();
 const corsOptions = {
