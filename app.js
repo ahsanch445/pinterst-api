@@ -13,7 +13,7 @@ const app = express();
 
 // CORS configuration
 const corsOptions = {
-  origin: 'https://pinterst-clone-amt.vercel.app',
+  origin: '*',
   credentials: true,
   optionsSuccessStatus: 204,
 };
