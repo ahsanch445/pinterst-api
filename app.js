@@ -19,7 +19,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// Set up view engine
+// Set up view egine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 // app.use(express.static(path.join(__dirname, 'Pinterst-Frontend/build')));
