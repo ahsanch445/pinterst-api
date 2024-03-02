@@ -11,7 +11,7 @@ require("./mongodb/db");
 
 const app = express();
 
-// CORS configuration
+// CORS configuraotion
 const corsOptions = {
   origin: 'https://pinterst-clone-qox1.vercel.app',
   credentials: true,
