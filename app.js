@@ -22,11 +22,11 @@ app.use(cors(corsOptions));
 // Set up view engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use(express.static(path.join(__dirname, 'Pinterst-Frontend/build')));
-// Serve React app
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'Pinterst-Frontend/build', 'index.html'));
-});
+// app.use(express.static(path.join(__dirname, 'Pinterst-Frontend/build')));
+// // Serve React app
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'Pinterst-Frontend/build', 'index.html'));
+// });
 
 // Logger and middleware setup
 app.use(logger('dev'));
