@@ -25,7 +25,7 @@ app.set('view engine', 'ejs');
 
 // Serve React app
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'Pinterst-Frontend/build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'Pinterst-Frontend', 'index.html'));
 });
 
 // Logger and middleware setup
