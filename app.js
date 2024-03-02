@@ -12,12 +12,12 @@ require("./mongodb/db");
 const app = express();
 
 // CORS configuraotion
-const corsOptions = {
-  origin: 'https://pinterst-clone-qox1.vercel.app',
-  credentials: true,
-  optionsSuccessStatus: 204,
-};
-app.use(cors(corsOptions));
+// const corsOptions = {
+//   origin: 'https://pinterst-clone-qox1.vercel.app',
+//   credentials: true,
+//   optionsSuccessStatus: 204,
+// };
+app.use(cors());
 
 // Set up view engine
 app.set('views', path.join(__dirname, 'views'));
