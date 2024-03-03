@@ -11,7 +11,7 @@ console.log(req.file)
       ).populate("posts")
    let cloudinaryResult
       try {
-       cloudinaryResult = await cloudinary.uploader.upload(req.file.path)
+       cloudinaryResult = await cloudinary.uploader.upload(req.file.path,{secure:true})
         
       } catch (error) {
         

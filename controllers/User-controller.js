@@ -99,7 +99,7 @@ const UpdateUser = async (req, res) => {
 
     if (file) {
         try {
-            cloudinaryResult = await cloudinary.uploader.upload(req.file.path);
+            cloudinaryResult = await cloudinary.uploader.upload(req.file.path,{secure:true});
 
             updatedUser = await userModel.findOneAndUpdate(
                 { email: usernameToUpdate },
