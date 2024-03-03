@@ -23,7 +23,7 @@ app.use(cors(corsOptions));
 // app.set('view engine', 'ejs');
 
 // Serve static files (React frontend)
-app.use(express.static(path.join(__dirname, 'pinterstClone/dist')));
+// app.use(express.static(path.join(__dirname, 'pinterstClone/dist')));
 
 // Logger and middleware setup
 app.use(logger('dev'));
