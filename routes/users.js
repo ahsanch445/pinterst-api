@@ -8,19 +8,27 @@ const Protected = require('../middlewares/JsonwebToken');
 const  getUser = require('../controllers/GetUser');
 const userPost = require('../controllers/UserPost');
 const getPost= require("../controllers/getPost")
-router.post('/', function(req, res, next) {
+const cors = require("cors")
+const corsOptions = {
+  origin: 'https://pinterst-clone-qox1.vercel.app',
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+app.use(cors(corsOptions));
+
+router.post('/', cors(corsOptions),function(req, res, next) {
   Login(req,res)
 });
-router.post('/login', function(req, res, next) {
+router.post('/login', cors(corsOptions),function(req, res, next) {
 
   LoginAuth(req,res)
 });
-router.get('/login', Protected,getUser);
-router.post('/Update',  upload.single('pic'), function(req, res, next) {
+router.get('/login',cors(corsOptions), Protected,getUser);
+router.post('/Update', cors(corsOptions), upload.single('pic'), function(req, res, next) {
  UpdateUser(req,res)
 });
-router.post('/logout',Logout);
+router.post('/logout', cors(corsOptions),Logout);
 router.post('/userPost',  Protected, upload.single('post'), userPost);
 
-router.get('/getPost',getPost);
+router.get('/getPost', cors(corsOptions),getPost);
 module.exports = router;
