@@ -16,6 +16,8 @@ const corsOptions = {
   origin: 'https://pinterst-clone-qox1.vercel.app',
   credentials: true,
   optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
 };
 app.use(cors(corsOptions));
 
