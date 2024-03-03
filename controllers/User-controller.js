@@ -95,7 +95,7 @@ const UpdateUser = async (req, res) => {
     const { fullname, username, about } = req.body
     let updatedUser;
     let file = req.file;
- 
+
 
     if (file) {
         try {

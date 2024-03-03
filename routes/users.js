@@ -20,7 +20,7 @@ router.post('/Update',  upload.single('pic'), function(req, res, next) {
  UpdateUser(req,res)
 });
 router.post('/logout',Logout);
-router.post('/userPost',  Protected, upload.single('post'), userPost);
+router.post('/userPost', Protected,  upload.single('post'), userPost);
 
 router.get('/getPost',getPost);
 module.exports = router;

@@ -2,6 +2,8 @@ const userModel = require("../models/user-model")
 const PostModel = require("../models/post-model")
 const cloudinary = require("../Utils/Cloudinry")
 const userPost = async(req,res)=>{
+console.log(req.body)
+console.log(req.file)
  try {
   
   const user = await userModel.findById(
@@ -34,7 +36,7 @@ const userPost = async(req,res)=>{
      
 
  } catch (error) {
-  
+
  }
 }
 module.exports =userPost 
