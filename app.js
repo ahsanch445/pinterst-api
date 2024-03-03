@@ -12,12 +12,7 @@ require("./mongodb/db");
 const app = express();
 
 // CORS configuraotion
-const corsOptions = {
-  origin: 'https://pinterst-clone-qox1.vercel.app',
-  credentials: true,
-  optionsSuccessStatus: 204,
-};
-app.use(cors(corsOptions));
+
 
 // Set up view egine
 app.set('views', path.join(__dirname, 'views'));
@@ -25,7 +20,7 @@ app.set('view engine', 'ejs');
 // app.use(express.static(path.join(__dirname, 'Pinterst-Frontend/build')));
 // // Serve React app
 // app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'Pinterst-Frontend/build', 'index.html'));
+//   res.sendFile(path.join(__dirname, 'Pinterst-Frontend/build' 'index.html'));
 // });
 
 // Logger and middleware setup
