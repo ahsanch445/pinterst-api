@@ -3,45 +3,21 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const cors = require("cors");
-require("dotenv").config();
+const cors = require('cors');
+require('dotenv').config();
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-require("./mongodb/db");
+require('./mongodb/db');
 
 const app = express();
 
-
-
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://pinterst-clone-qox1.vercel.app');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-});
-
-// Your other routes and middleware go here
-
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
-});
-
-// CORS configuraotion
+// CORS configuration
 const corsOptions = {
   origin: 'https://pinterst-clone-qox1.vercel.app',
   credentials: true,
   optionsSuccessStatus: 204,
 };
 app.use(cors(corsOptions));
-
-// Set up view egine
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-// app.use(express.static(path.join(__dirname, 'Pinterst-Frontend/build')));
-// // Serve React app
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'Pinterst-Frontend/build' 'index.html'));
-// });
 
 // Logger and middleware setup
 app.use(logger('dev'));
@@ -56,13 +32,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+// Handle preflight requests for '/users/login'
+app.options('/users/login', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://pinterst-clone-qox1.vercel.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.status(200).end();
+});
+
 // Catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // Error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // Set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
