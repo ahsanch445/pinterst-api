@@ -11,6 +11,21 @@ require("./mongodb/db");
 
 const app = express();
 
+
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://pinterst-clone-qox1.vercel.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
+// Your other routes and middleware go here
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
 // CORS configuraotion
 const corsOptions = {
   origin: 'https://pinterst-clone-qox1.vercel.app',
