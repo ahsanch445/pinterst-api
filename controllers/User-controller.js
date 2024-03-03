@@ -106,7 +106,7 @@ const UpdateUser = async (req, res) => {
                 {
                     $set: {
 
-                        image: cloudinaryResult.url,
+                        image: cloudinaryResult.secure_url,
 
                     },
 
