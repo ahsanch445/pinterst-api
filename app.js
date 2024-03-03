@@ -11,10 +11,7 @@ require("./mongodb/db");
 
 const app = express();
 
-
-
-
-// CORS configuraotion
+// CORS configuration
 const corsOptions = {
   origin: 'https://pinterst-clone-qox1.vercel.app',
   credentials: true,
@@ -22,10 +19,11 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// Set up view egine
+// Set up view engine (not needed for React frontend)
+// app.set('view engine', 'ejs');
+
+// Serve static files (React frontend)
 app.use(express.static(path.join(__dirname, 'pinterstClone/dist')));
-
-
 
 // Logger and middleware setup
 app.use(logger('dev'));
@@ -46,6 +44,16 @@ app.use(function(req, res, next) {
 });
 
 // Error handler
+app.use(function(err, req, res, next) {
+  // Set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // Send a JSON response for errors
+  res.status(err.status || 500).json({
+    error: err.message || 'Internal Server Error',
+  });
+});
 
 // Start the server
 const PORT = process.env.PORT || 3000;
