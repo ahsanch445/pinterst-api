@@ -13,7 +13,7 @@ const app = express();
 
 // CORS configuration
 const corsOptions = {
-  origin: 'https://pinterst-clone-qox1.vercel.app',
+  origin: 'https://pinterst-clone.vercel.app',
   credentials: true,
   optionsSuccessStatus: 204,
   allowedHeaders: ['Content-Type', 'Authorization'],
