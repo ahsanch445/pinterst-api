@@ -22,10 +22,16 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // Set up view engine (not needed for React frontend)
-// app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, 'build')));
 
 // Serve static files (React frontend)
-// app.use(express.static(path.join(__dirname, 'pinterstClone/dist')));
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'), (err) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
 
 // Logger and middleware setup
 app.use(logger('dev'));
