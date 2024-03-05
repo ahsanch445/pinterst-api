@@ -93,6 +93,7 @@ const UpdateUser = async (req, res) => {
     const usernameToUpdate = req.body.email;
     var cloudinaryResult = null
     const { fullname, username, about } = req.body
+  
     let updatedUser;
     let file = req.file;
 
@@ -122,7 +123,7 @@ const UpdateUser = async (req, res) => {
     }
     try {
 
-        if (username.length > 6 || fullname.length > 6 || about.length >= 1) {
+        if (username&&username.length > 6 || fullname&&fullname.length > 6 || about&&about.length >= 1) {
             let updatedInfo
             if (fullname) {
                 updatedInfo = {
@@ -146,7 +147,8 @@ const UpdateUser = async (req, res) => {
 
                 };
             }
-            else if (fullname && username && about) {
+            if (fullname && username && about) {
+               
                 updatedInfo = {
 
                     name: req.body.fullname,
@@ -156,7 +158,7 @@ const UpdateUser = async (req, res) => {
 
                 };
             }
-            if (fullname && username) {
+            if (fullname && username &&!about) {
                
                 updatedInfo = {
 
@@ -168,7 +170,7 @@ const UpdateUser = async (req, res) => {
                 };
 
             }
-            if (req.body.about && req.body.username) {
+            if (about && username &&!fullname) {
             
                 updatedInfo = {
 
@@ -181,7 +183,7 @@ const UpdateUser = async (req, res) => {
 
 
             }
-            if (about && fullname) {
+            if (about && fullname &&!username) {
                 updatedInfo = {
 
                     name: req.body.fullname,
